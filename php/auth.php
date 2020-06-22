@@ -8,13 +8,14 @@
     $result = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
     $user = $result->fetch_assoc();
     if(count($user) == 0) {
-        echo "Такой пользователь не найден";
-        echo "<a href='../index.php'>Вернуться назад</a>";
-        exit();
+        setcookie('wrong', 15, time() + 250, "/");
+        header('location: ../log.php');
+        exit;
     }
     setcookie('user', $user['name'], time() + 3600, "/");
 
     $mysql->close();
 
     header('location: /');
+
 ?>
