@@ -5,6 +5,7 @@
     $login = filter_var(trim($_POST['login']), FILTER_SANITIZE_STRING);
     $mail = filter_var(trim($_POST['mail']), FILTER_SANITIZE_STRING);
     $password = filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING);
+    $password = md5($pass."buiqp2o03");
 
     
     if(mb_strlen($login) < 5 || mb_strlen($login) > 15) {
